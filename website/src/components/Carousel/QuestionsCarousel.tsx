@@ -7,7 +7,6 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import { Carousel, CarouselProps } from 'react-responsive-carousel';
 import SVG from '../svgs/SVG_DataBase';
 import { QuestionsArray } from './interfaces';
-import { useSelector } from "react-redux"
 import Kontaktformular from '../Kontaktformular/Kontaktformular';
 
 let nextSlideTimeout: any;
@@ -20,7 +19,6 @@ const QuestionsCarousel: FC<{ questionsID: string }> = ({ questionsID }) => {
     const carouselRef = useRef<any>(null)
     const router = useRouter()
     const pathname = usePathname()
-    const MailSent = useSelector((state: RootState) => state.MailState.MailSent)
 
     useEffect(() => {
         updateProccess(() => {
@@ -107,30 +105,19 @@ const QuestionsCarousel: FC<{ questionsID: string }> = ({ questionsID }) => {
         window.history.back()
     }
 
-    useEffect(() => {
-        if (MailSent) {
-            if (slideIndex <= carouselRef.current.itemsRef.length - 1) {
-                setSlideIndex(e => ++e)
-                router.push(`#!${slideIndex + 1}`, { scroll: false })
-            }
-        }
-    }, [MailSent])
 
     return (
         <div className="min-h-[21rem]">
             {
                 isLoading ? <LoadingSpinner /> :
                     <>
-                        <div className='absolute top-0 sm:fixed h-1 w-full bg-black z-50'>
-                            <div className={`transition-[width] duration-500 h-full bg-primary`} style={{ width: `${slideProcess}%` }}></div>
-                        </div>
                         {questionsArray &&
                             <Carousel {...carouselSettings}
                                 selectedItem={slideIndex - 1}
                                 ref={carouselRef}>
                                 {(questionsArray.map((page, pkey) => <Page page={page} pkey={pkey} key={pkey} nextSlide={nextSlide} />)) as any}
                                 {slideIndex == 7 && <div className=''>
-                                    <div className="text-primary text-start text-2xl lg:text-4xl mb-4 font-bold">
+                                    <div className="text-primary text-start text-2xl lg:text-4xl mb-4 font-bold" style={{zIndex: 999}}>
                                         Kontaktformular
                                     </div>
                                     <div className="border border-primary rounded-lg">

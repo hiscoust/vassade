@@ -394,7 +394,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="w-full bg-slate-50" id="question">
+      <div className="w-full bg-slate-50 ">
         <div className="max-w-7xl mx-auto w-full p-4 lg:p-16">
           <QuestionsCarousel questionsID="deammung-der-fassade" />
         </div>

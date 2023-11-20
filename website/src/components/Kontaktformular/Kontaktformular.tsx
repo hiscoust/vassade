@@ -74,7 +74,10 @@ export default function Kontaktformular() {
     }
 
     const ErrorMsg: FC = () => {
-        return (<div className='fixed top-20 z-50 left-1/2 -translate-x-1/2 w-full'>
+        if (!isError)
+            return (<></>)
+
+        return (<div className='fixed top-20 left-1/2 -translate-x-1/2 w-full' style={{ zIndex: 999 }}>
             <div className='mx-4'>
                 <div className="bg-red-100 border-l-4 border-red-600 text-red-600 p-4 m-4 mx-auto rounded relative w-fit" role="alert">
                     <p className="font-bold text-start text-xl">Entschuldigung</p>
@@ -94,7 +97,7 @@ export default function Kontaktformular() {
             return (<></>)
 
         return (
-            <div className={`fixed top-20 z-50 left-1/2 -translate-x-1/2 w-full`}>
+            <div className={`fixed top-20 z-50 left-1/2 -translate-x-1/2 w-full`} style={{ zIndex: 999 }}>
                 <div className='mx-4'>
                     <div className="bg-success-100 border-l-4 border-success-300 p-4 m-4 mx-auto rounded relative w-fit" role="alert">
                         <p className="font-bold text-start text-xl">Vielen Dank!</p>
@@ -111,7 +114,7 @@ export default function Kontaktformular() {
     return (
         <>
             <MailSuccessModal />
-            {isError && <ErrorMsg />}
+            <ErrorMsg />
 
             <div className="">
                 <form ref={formRef} onSubmit={onSUBMIT} className="p-4 lg:p-8">
