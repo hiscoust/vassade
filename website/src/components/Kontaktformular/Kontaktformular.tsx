@@ -254,7 +254,7 @@ export default function Kontaktformular() {
                     <div>
                         <div className="relative mb-3" data-te-input-wrapper-init>
                             <textarea className="peer min-h-[10rem] p-3 w-full rounded border border-black text-gray-600 placeholder-transparent focus:outline-none focus:border-primary-100 whitespace-pre-line" id="Textarea" rows={19} placeholder="Nachricht" defaultValue={
-                                `Sehr geehrtes Team VASSADE,\n\nich interessiere mich für eine Beratung und möchte gerne weitere Informationen zu den angebotenen Dienstleistungen erhalten.\n\nBitte nehmen Sie Kontakt mit mir auf, um einen geeigneten Termin für eine Beratung zu vereinbaren.\n\nich bevorzuge eine telefonische Kontaktaufnahme, um mein Anliegen näher zu besprechen.\n\nIch freue mich auf Ihre Rückmeldung.`} ref={messageRef} />
+                                `Sehr geehrtes Team VASSADE,\n\nich interessiere mich für eine Beratung und möchte gerne weitere Informationen zu den angebotenen Dienstleistungen erhalten.\n\nBitte nehmen Sie Kontakt mit mir auf, um einen geeigneten Termin für eine Beratung zu vereinbaren.\n\nIch bevorzuge eine telefonische Kontaktaufnahme, um mein Anliegen näher zu besprechen.\n\nIch freue mich auf Ihre Rückmeldung.`} ref={messageRef} />
 
 
                             <label htmlFor="Textarea" className="absolute ml-2 px-1 left-0 text-gray-600 text-sm transition-all 
@@ -270,7 +270,7 @@ export default function Kontaktformular() {
                     </div>
 
                     <div className='mb-4 text-center text-[.7rem] sm:text-[1rem] sm:mt-5' style={{ lineHeight: "1.2" }}>
-                        Mit dem Absenden meiner Anfrage habe ich die <a href='/datenschutz' className='text-blue-700' role={"button"}>Datenschutzerklärung</a> akzeptiert und zur Kenntnis genommen.
+                        Mit dem Absenden meiner Anfrage habe ich die <a href='/datenschutz' className='text-primary' role={"button"}>Datenschutzerklärung</a> akzeptiert und zur Kenntnis genommen.
                     </div>
 
                     {/*Submit button*/}

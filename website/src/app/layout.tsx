@@ -4,6 +4,9 @@ import './globals.css'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import ReduxProvider from '../components/Redux/ReduxProvider';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -29,13 +32,13 @@ export default function RootLayout({
         {typeof window != "undefined" && (window.location.pathname == "/") &&
           <link rel='preload' as='video/mp4' href="/assets/vassade_vtitle.mp4" />}
       </head>
-      <body className={inter.className + " flex bg-lightgray"}>
-        <main className='mx-auto w-full max-w-7xl bg-white shadow-xl'>
-          {/* Desktop Navbar */}
+      <body className={inter.className}>
+        {/* Desktop Navbar */}
+        <ReduxProvider>
           <Navbar />
           {children}
           <Footer />
-        </main>
+        </ReduxProvider>
       </body>
     </html>
   )
