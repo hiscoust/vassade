@@ -2,11 +2,25 @@
 
 import React, { FC, useEffect, useRef, useState } from 'react'
 import axios from "axios"
+import { setMailSendingFailed, setMailStatusSucceed } from '../Redux/reducers/MailStateReducer';
+import { useDispatch } from 'react-redux';
+import { generateTable } from './generateTable';
 
-export default function Kontaktformular() {
-    const [isError, setIsError] = useState(false)
+export interface ClientDataObject {
+    vorname: string | undefined
+    nachname: string | undefined
+    gender: string | undefined
+    email: string | undefined
+    tel: string | undefined
+    plz: string | undefined
+    city: string | undefined
+    msg: string
+    qestionsTable?: string
+}
+
+const Kontaktformular: React.FC<{ selectedQuestionsDataObject: any }> = React.memo(({ selectedQuestionsDataObject }) => {
     const [isLoading, setIsLoading] = useState(false)
-    const [mailSuccess, setMailSuccess] = useState(false)
+    const dispatch = useDispatch()
 
     const [genderNotSelected, setGenderNotSelected] = useState(false);
 
@@ -21,7 +35,6 @@ export default function Kontaktformular() {
     const messageRef = useRef<any>();
 
 
-
     function onSUBMIT(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         if (!(genderMaleRef.current?.checked || genderFemaleRef.current?.checked)) {
@@ -29,7 +42,8 @@ export default function Kontaktformular() {
             return
         }
 
-        const dataObject = {
+
+        const dataObject: ClientDataObject = {
             vorname: vornameRef.current?.value,
             nachname: nachnameRef.current?.value,
             gender: genderMaleRef.current?.checked && genderMaleRef.current.value || genderFemaleRef.current?.value,
@@ -40,12 +54,16 @@ export default function Kontaktformular() {
             msg: messageRef.current?.value
         }
 
-
+        const table = generateTable(selectedQuestionsDataObject, "Fassadendämmung", dataObject);
+        dataObject["qestionsTable"] = table;
+        // console.log(dataObject)
+        console.log(table)
         sendMail(dataObject);
     }
 
     function sendMail(dataObject: Object) {
-        const url = "/backend/mailer.php"
+        // const url = "/backend/mailer.php"
+        const url = "http://localhost:3081/backend/mailer.php"
 
         setIsLoading(true)
         axios.post(url, dataObject, {
@@ -53,11 +71,12 @@ export default function Kontaktformular() {
                 'Content-Type': 'application/json; charset=utf-8',
             }
         }).then(res => {
+            const response: string = res.data.msgSent;
             if (res.data.msgSent) {
-                setMailSuccess(true)
+                dispatch(setMailStatusSucceed(true))
                 setIsLoading(false)
                 setTimeout(() => {
-                    setMailSuccess(false)
+                    dispatch(setMailStatusSucceed(false))
                 }, 8000);
             }
             else {
@@ -65,59 +84,18 @@ export default function Kontaktformular() {
             }
         }).catch(err => {
             console.log(err);
-            setIsError(true)
+            dispatch(setMailSendingFailed(true))
             setIsLoading(false)
             setTimeout(() => {
-                setIsError(false)
+                dispatch(setMailSendingFailed(false))
             }, 8000);
         })
     }
 
-    const ErrorMsg: FC = () => {
-        if (!isError)
-            return (<></>)
-
-        return (<div className='fixed top-20 left-1/2 -translate-x-1/2 w-full' style={{ zIndex: 999 }}>
-            <div className='mx-4'>
-                <div className="bg-red-100 border-l-4 border-red-600 text-red-600 p-4 m-4 mx-auto rounded relative w-fit" role="alert">
-                    <p className="font-bold text-start text-xl">Entschuldigung</p>
-                    <p className='text-start'>Ein Fehler ist aufgetreten. Bitte versuche es erneut oder nutze unsere Kontaktdaten </p>
-                    <button className='absolute top-3 right-3 text-gray-700' onClick={() => setIsError(false)} >
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                            <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>)
-    }
-
-    const MailSuccessModal: FC = () => {
-        if (!mailSuccess)
-            return (<></>)
-
-        return (
-            <div className={`fixed top-20 z-50 left-1/2 -translate-x-1/2 w-full`} style={{ zIndex: 999 }}>
-                <div className='mx-4'>
-                    <div className="bg-success-100 border-l-4 border-success-300 p-4 m-4 mx-auto rounded relative w-fit" role="alert">
-                        <p className="font-bold text-start text-xl">Vielen Dank!</p>
-                        <p className='text-start'>Ihre Anfrage ist bei uns eingegangen. Wir melden uns in kürzester Zeit bei Ihnen.</p>
-                        <button className='absolute top-3 right-3 text-gray-700' onClick={() => setMailSuccess(false)} >
-                            ja
-                        </button>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
     return (
         <>
-            <MailSuccessModal />
-            <ErrorMsg />
-
             <div className="">
-                <form ref={formRef} onSubmit={onSUBMIT} className="p-4 lg:p-8">
+                <form ref={formRef} onSubmit={onSUBMIT} className="p-4 lg:p-8 ">
                     {/* Gender */}
 
                     <div className="grid mb-4" onChange={() => { setGenderNotSelected(false) }}>
@@ -165,7 +143,7 @@ export default function Kontaktformular() {
 
                     <div className="grid sm:grid-cols-2">
                         <div className="relative mb-4 sm:mr-3">
-                            <input id="vorname" name="vorname" type="text" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="vorname" ref={vornameRef} />
+                            <input id="vorname" name="vorname" type="text" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="vorname" ref={vornameRef} required />
                             <label htmlFor="nachname" className="absolute ml-2 left-0 px-1 text-gray-600 text-sm transition-all 
                                 peer-placeholder-shown:text-gray-8 peer-placeholder-shown:text-gray-800 -top-2.5 bg-white                                
                                 peer-empty:peer-placeholder-shown:top-2.5
@@ -179,7 +157,7 @@ export default function Kontaktformular() {
                                 ">Vorname *</label>
                         </div>
                         <div className="relative mb-4">
-                            <input id="nachname" type="text" name="nachname" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="nachname" ref={nachnameRef} />
+                            <input id="nachname" type="text" name="nachname" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="nachname" ref={nachnameRef} required />
                             <label htmlFor="nachname" className="absolute ml-2 left-0 px-1 text-gray-600 text-sm transition-all 
                                 peer-placeholder-shown:text-gray-8 peer-placeholder-shown:text-gray-800 -top-2.5 bg-white                                
                                 peer-empty:peer-placeholder-shown:top-2.5
@@ -195,7 +173,7 @@ export default function Kontaktformular() {
 
                     <div className="grid sm:grid-cols-2">
                         <div className="relative mb-4 sm:mr-3">
-                            <input id="email" name="email" type="email" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="email" ref={emailRef} />
+                            <input id="email" name="email" type="email" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="email" ref={emailRef} required />
                             <label htmlFor="email" className="absolute ml-2 left-0 px-1 text-gray-600 text-sm transition-all 
                                 peer-placeholder-shown:text-gray-8 peer-placeholder-shown:text-gray-800 -top-2.5 bg-white                                
                                 peer-empty:peer-placeholder-shown:top-2.5
@@ -208,7 +186,7 @@ export default function Kontaktformular() {
                                 pointer-events-none">E-Mail *</label>
                         </div>
                         <div className="relative mb-4">
-                            <input id="tel" type="text" name="tel" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="tel" ref={telRef} onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            <input id="tel" type="text" name="tel" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="tel" ref={telRef} required onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                                 e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
                             }} />
                             <label htmlFor="tel" className="absolute ml-2 left-0 px-1 text-gray-600 text-sm transition-all 
@@ -228,7 +206,7 @@ export default function Kontaktformular() {
                         <div className="relative mb-4 sm:mr-3">
                             <input id="plz" type="text" name="plz" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="plz" ref={plzRef} onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                                 e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
-                            }} />
+                            }} required />
                             <label htmlFor="plz" className="absolute ml-2 left-0 px-1 text-gray-600 text-sm transition-all 
                                 peer-placeholder-shown:text-gray-8 peer-placeholder-shown:text-gray-800 -top-2.5 bg-white                                
                                 peer-empty:peer-placeholder-shown:top-2.5
@@ -241,7 +219,7 @@ export default function Kontaktformular() {
                                 pointer-events-none">Postleitzahl *</label>
                         </div>
                         <div className="relative mb-4">
-                            <input id="city" name="city" type="test" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="city" ref={cityRef} />
+                            <input id="city" name="city" type="test" className="peer h-11 sm:h-14 px-2 w-full rounded border border-black text-gray-700 placeholder-transparent focus:outline-none focus:border-primary-100" placeholder="city" ref={cityRef} required />
                             <label htmlFor="city" className="absolute ml-2 left-0 px-1 text-gray-600 text-sm transition-all 
                                 peer-placeholder-shown:text-gray-8 peer-placeholder-shown:text-gray-800 -top-2.5 bg-white                                
                                 peer-empty:peer-placeholder-shown:top-2.5
@@ -254,9 +232,9 @@ export default function Kontaktformular() {
                                 pointer-events-none">Ort *</label>
                         </div>
                     </div>
-                    <div>
+                    <div >
                         <div className="relative mb-3" data-te-input-wrapper-init>
-                            <textarea className="peer min-h-[10rem] p-3 w-full rounded border border-black text-gray-600 placeholder-transparent focus:outline-none focus:border-primary-100 whitespace-pre-line" id="Textarea" rows={19} placeholder="Nachricht" defaultValue={
+                            <textarea className="peer min-h-[10rem] p-3 w-full rounded border border-black text-gray-600 placeholder-transparent focus:outline-none focus:border-primary-100 whitespace-pre-line" id="Textarea" rows={9} placeholder="Nachricht" defaultValue={
                                 `Sehr geehrtes Team VASSADE,\n\nich interessiere mich für eine Beratung und möchte gerne weitere Informationen zu den angebotenen Dienstleistungen erhalten.\n\nBitte nehmen Sie Kontakt mit mir auf, um einen geeigneten Termin für eine Beratung zu vereinbaren.\n\nIch bevorzuge eine telefonische Kontaktaufnahme, um mein Anliegen näher zu besprechen.\n\nIch freue mich auf Ihre Rückmeldung.`} ref={messageRef} />
 
 
@@ -291,5 +269,6 @@ export default function Kontaktformular() {
             </div >
         </>
     )
-}
+})
 
+export default Kontaktformular;

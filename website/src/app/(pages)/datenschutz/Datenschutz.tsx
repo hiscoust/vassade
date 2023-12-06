@@ -14,8 +14,6 @@ const Datenschutz = () => {
     return (
         <main className="pb-8 px-4">
 
-
-
             <div className="" id="accordionExample">
                 <h2 className="text-xl lg:text-3xl border-l-2 border-neutral-800 text-neutral-800 px-3 my-8 font-bold">Datenschutzerklärung</h2>
                 <div className="rounded-t-lg border border-neutral-200 bg-white">
@@ -64,7 +62,7 @@ const Datenschutz = () => {
                     </h2>
                     <div id="collapse2" className="!visible hidden" data-te-collapse-item aria-labelledby="headingTwo" data-te-parent="#accordionExample">
                         <div className="px-5 py-4">
-                            Die Datenschutzerklärung der DSW beruht auf den Begrifflichkeiten, die durch
+                            Die Datenschutzerklärung der VASSADE beruht auf den Begrifflichkeiten, die durch
                             den
                             Europäischen Richtlinien- und Verordnungsgeber beim Erlass der Datenschutz-Grundverordnung
                             (DS-GVO)
@@ -100,13 +98,13 @@ const Datenschutz = () => {
                             </p>
                             <br />
                             <p>
-                                <b>Deutsche Sanierungswerke Nord</b><br />
+                                <b>Vassade</b><br />
                                 Berliner Straße 11 <br />
                                 21509 Glinde<br />
                                 Deutschland<br /><br />
-                                Telefon: <a href="tel:+49 160 59 11 365" className="text-decoration-none text-black">+49 160 59 11 365</a><br />
-                                E-Mail: <a href="mailto:kontakt@dsw-energie.de" className="text-decoration-none text-black">kontakt@dsw-energie.de</a><br />
-                                Website: <a target="_blank" rel="noreferrer" href="https://www.dsw-energie.de" className="text-decoration-none text-black">https://www.dsw-energie.de</a><br />
+                                Telefon: <a href="tel:+49 176 32 444 232" className="text-decoration-none text-black">+49 176 32 444 232</a><br />
+                                E-Mail: <a href="mailto:kontakt@vassade.de" className="text-decoration-none text-black">kontakt@vassade.de</a><br />
+                                Website: <a target="_blank" rel="noreferrer" href="https://www.vassade.de" className="text-decoration-none text-black">https://www.vassade.de</a><br />
                             </p>
                         </div>
                     </div>
@@ -124,7 +122,7 @@ const Datenschutz = () => {
                     </h2>
                     <div id="collapse4" className="!visible hidden" data-te-collapse-item aria-labelledby="headingTwo" data-te-parent="#accordionExample">
                         <div className="px-5 py-4">
-                            Die Internetseite der DSW erfasst mit jedem Aufruf der Internetseite durch
+                            Die Internetseite der VASSADE erfasst mit jedem Aufruf der Internetseite durch
                             eine
                             betroffene Person oder ein automatisiertes System eine Reihe von allgemeinen Daten und
                             Informationen. Diese allgemeinen Daten und Informationen werden in den Logfiles des Servers
@@ -144,7 +142,7 @@ const Datenschutz = () => {
                             informationstechnologischen
                             Systeme dienen.
                             <br /><br />
-                            Bei der Nutzung dieser allgemeinen Daten und Informationen zieht die DSW
+                            Bei der Nutzung dieser allgemeinen Daten und Informationen zieht die VASSADE
                             keine
                             Rückschlüsse auf die betroffene Person. Diese Informationen werden vielmehr benötigt, um (1)
                             die
@@ -159,7 +157,7 @@ const Datenschutz = () => {
                             notwendigen
                             Informationen bereitzustellen. Diese anonym erhobenen Daten und Informationen werden durch
                             die
-                            DSW daher einerseits statistisch und ferner mit dem Ziel ausgewertet, den
+                            VASSADE daher einerseits statistisch und ferner mit dem Ziel ausgewertet, den
                             Datenschutz
                             und die Datensicherheit in unserem Unternehmen zu erhöhen, um letztlich ein optimales
                             Schutzniveau
@@ -184,7 +182,7 @@ const Datenschutz = () => {
                     </h2>
                     <div id="collapse5" className="!visible hidden" data-te-collapse-item aria-labelledby="headingTwo" data-te-parent="#accordionExample">
                         <div className="px-5 py-4">
-                            Die Internetseite der DSW enthält aufgrund von gesetzlichen Vorschriften
+                            Die Internetseite der VASSADE enthält aufgrund von gesetzlichen Vorschriften
                             Angaben,
                             die
                             eine schnelle elektronische Kontaktaufnahme zu unserem Unternehmen sowie eine unmittelbare
@@ -355,18 +353,18 @@ const Datenschutz = () => {
                                     gemäß Art. 8 Abs. 1 DS-GVO erhoben</li>
                             </ul>
                             Sofern einer der oben genannten Gründe zutrifft und eine betroffene Person die Löschung von
-                            personenbezogenen Daten, die bei der DSW gespeichert sind, veranlassen möchte,
+                            personenbezogenen Daten, die bei der VASSADE gespeichert sind, veranlassen möchte,
                             kann
                             sie
                             sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden. Der
-                            Mitarbeiter der DSW wird veranlassen, dass dem Löschverlangen unverzüglich
+                            Mitarbeiter der VASSADE wird veranlassen, dass dem Löschverlangen unverzüglich
                             nachgekommen
                             wird.
                             <br /><br />
-                            Wurden die personenbezogenen Daten von der DSW öffentlich gemacht und ist unser
+                            Wurden die personenbezogenen Daten von der VASSADE öffentlich gemacht und ist unser
                             Unternehmen als Verantwortlicher gemäß Art. 17 Abs. 1 DS-GVO zur Löschung der personenbezogenen
                             Daten
-                            verpflichtet, so trifft die DSW unter Berücksichtigung der verfügbaren
+                            verpflichtet, so trifft die VASSADE unter Berücksichtigung der verfügbaren
                             Technologie
                             und
                             der Implementierungskosten angemessene Maßnahmen, auch technischer Art, um andere für die
@@ -378,7 +376,7 @@ const Datenschutz = () => {
                             oder
                             Replikationen dieser personenbezogenen Daten verlangt hat, soweit die Verarbeitung nicht
                             erforderlich
-                            ist. Der Mitarbeiter der DSW wird im Einzelfall das Notwendige veranlassen.
+                            ist. Der Mitarbeiter der VASSADE wird im Einzelfall das Notwendige veranlassen.
                             <br /><br />
                             <b>e) Recht auf Einschränkung der Verarbeitung</b><br />
                             Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen
@@ -415,11 +413,11 @@ const Datenschutz = () => {
                             </ul>
                             Sofern eine der oben genannten Voraussetzungen gegeben ist und eine betroffene Person die
                             Einschränkung
-                            von personenbezogenen Daten, die bei der DSW gespeichert sind, verlangen möchte,
+                            von personenbezogenen Daten, die bei der VASSADE gespeichert sind, verlangen möchte,
                             kann
                             sie
                             sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden. Der
-                            Mitarbeiter der DSW wird die Einschränkung der Verarbeitung veranlassen.
+                            Mitarbeiter der VASSADE wird die Einschränkung der Verarbeitung veranlassen.
                             <br /><br />
                             <b>f) Recht auf Datenübertragbarkeit</b><br />
                             Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen
@@ -453,7 +451,7 @@ const Datenschutz = () => {
                             <br /><br />
                             Zur Geltendmachung des Rechts auf Datenübertragbarkeit kann sich die betroffene Person jederzeit
                             an
-                            einen Mitarbeiter der DSW wenden.
+                            einen Mitarbeiter der VASSADE wenden.
                             <br /><br />
                             <b>g) Recht auf Widerspruch</b><br />
                             Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das vom Europäischen
@@ -465,7 +463,7 @@ const Datenschutz = () => {
                             auf
                             diese Bestimmungen gestütztes Profiling.
                             <br /><br />
-                            Die DSW verarbeitet die personenbezogenen Daten im Falle des Widerspruchs nicht
+                            Die VASSADE verarbeitet die personenbezogenen Daten im Falle des Widerspruchs nicht
                             mehr,
                             es
                             sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die den
@@ -473,20 +471,20 @@ const Datenschutz = () => {
                             Rechten und Freiheiten der betroffenen Person überwiegen, oder die Verarbeitung dient der
                             Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.
                             <br /><br />
-                            Verarbeitet die DSW personenbezogene Daten, um Direktwerbung zu betreiben, so hat
+                            Verarbeitet die VASSADE personenbezogene Daten, um Direktwerbung zu betreiben, so hat
                             die
                             betroffene Person das Recht, jederzeit Widerspruch gegen die Verarbeitung der personenbezogenen
                             Daten
                             zum Zwecke derartiger Werbung einzulegen. Dies gilt auch für das Profiling, soweit es mit
                             solcher
-                            Direktwerbung in Verbindung steht. Widerspricht die betroffene Person gegenüber der DSW
-                            der Verarbeitung für Zwecke der Direktwerbung, so wird die DSW die
+                            Direktwerbung in Verbindung steht. Widerspricht die betroffene Person gegenüber der VASSADE
+                            der Verarbeitung für Zwecke der Direktwerbung, so wird die VASSADE die
                             personenbezogenen
                             Daten nicht mehr für diese Zwecke verarbeiten.
                             <br /><br />
                             Zudem hat die betroffene Person das Recht, aus Gründen, die sich aus ihrer besonderen Situation
                             ergeben,
-                            gegen die sie betreffende Verarbeitung personenbezogener Daten, die bei der DSW
+                            gegen die sie betreffende Verarbeitung personenbezogener Daten, die bei der VASSADE
                             zu
                             wissenschaftlichen oder historischen Forschungszwecken oder zu statistischen Zwecken gemäß Art.
                             89
@@ -498,7 +496,7 @@ const Datenschutz = () => {
                             <br /><br />
                             Zur Ausübung des Rechts auf Widerspruch kann sich die betroffene Person direkt jeden Mitarbeiter
                             der
-                            DSW oder einen anderen Mitarbeiter wenden. Der betroffenen Person steht es ferner
+                            VASSADE oder einen anderen Mitarbeiter wenden. Der betroffenen Person steht es ferner
                             frei,
                             im Zusammenhang mit der Nutzung von Diensten der Informationsgesellschaft, ungeachtet der
                             Richtlinie
@@ -530,7 +528,7 @@ const Datenschutz = () => {
                             Person und dem Verantwortlichen erforderlich oder (2) erfolgt sie mit ausdrücklicher
                             Einwilligung
                             der
-                            betroffenen Person, trifft die DSW angemessene Maßnahmen, um die Rechte und
+                            betroffenen Person, trifft die VASSADE angemessene Maßnahmen, um die Rechte und
                             Freiheiten
                             sowie die berechtigten Interessen der betroffenen Person zu wahren, wozu mindestens das Recht
                             auf

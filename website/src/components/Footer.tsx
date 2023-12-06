@@ -9,7 +9,7 @@ const Footer = () => {
                         <img src="/assets/logo_weiss.png" className='w-[130px] lg:w-[200px]' alt="VASSADE" />
                     </a>
                     <div className='grid gap-3'>
-                        <div className='flex space-x-3 items-center justify-evenly underline text-sm lg:text-lg text-white'>
+                        <div className='flex space-x-3 items-center justify-evenly underline text-sm lg:text-lg text-gray-300'>
                             <a className="block" href="/impressum">
                                 Impressum
                             </a>

@@ -6,18 +6,18 @@ export default function Impressum() {
 
     return (
         <>
-            <main className='flex flex-col bg-ourWhite'>
+            <main className='flex flex-col'>
                 <div className="mx-auto bg-white max-w-7xl shadow-xl w-full">
 
                     <div>
-                        <div className="container p-7" data-aos="fade-up" style={{ color: 'black' }}>
+                        <div className="container p-7 pt-0" data-aos="fade-up" style={{ color: 'black' }}>
                             <h2 className="text-3xl border-l-2 border-neutral-800 text-neutral-800 px-3 my-8 font-bold">Impressum</h2>
                             <div className="mb-5">
                                 <h4 className="mb-2 text-xl font-semibold">
                                     Anschrift
                                 </h4>
                                 <p className="">
-                                    <b>Deutsche Sanierungswerke Nord</b> <br />
+                                    <b>VASSADE</b> <br />
                                     Berliner Straße 11<br />
                                     21509 Glinde <br />
                                 </p>
@@ -27,7 +27,7 @@ export default function Impressum() {
                                     Geschäftsführer
                                 </h4>
                                 <p className="">
-                                    M. Hissa Nawabi
+                                    Hissa Nawabi
                                 </p>
                             </div>
                             <div className="mb-5">
@@ -35,8 +35,8 @@ export default function Impressum() {
                                     Kontakt
                                 </h4>
                                 <p className="">
-                                    Telefon: <a className="text-decoration-none text-black" href="tel:+49 160 59 11 365">+49 160 59 11 365</a><br />
-                                    E-Mail: <a className="text-decoration-none text-black" href="mailto:kontak@dsw-energie.de">kontakt@dsw-energie.de</a>
+                                    Telefon: <a className="text-decoration-none text-black" href="tel:+49 176 32 444 232">+49 176 32 444 232</a><br />
+                                    E-Mail: <a className="text-decoration-none text-black" href="mailto:kontakt@vassade.de">kontakt@vassade.de</a>
                                 </p>
                             </div>
                             <div className="mb-5">

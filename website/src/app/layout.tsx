@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "VASSADE",
     template: '%s | VASSADE',
   },
-  description: "..."
+  description: "Ihr Generalunternehmer und Fachbetrieb für energieeffiziente Fassadendämmung, individuelle Putzarten und modern-rustikale Klinkerriemchen."
 }
 
 export default function RootLayout({
@@ -27,15 +27,15 @@ export default function RootLayout({
 
   return (
 
-    <html lang="en" className='scroll-smooth'>
+    <html lang="de" className='scroll-smooth'>
       <head>
-        {typeof window != "undefined" && (window.location.pathname == "/") &&
-          <link rel='preload' as='video/mp4' href="/assets/vassade_vtitle.mp4" />}
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+        <link rel='preload' href='/assets/logo_weiss.png' type='image/png' />
       </head>
       <body className={inter.className}>
         {/* Desktop Navbar */}
         <ReduxProvider>
-          <Navbar />
+          {/* <Navbar /> */}
           {children}
           <Footer />
         </ReduxProvider>

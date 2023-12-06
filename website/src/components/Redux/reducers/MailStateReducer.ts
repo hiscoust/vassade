@@ -4,26 +4,18 @@ export const MailStateReducer = createSlice({
     name: "Mailstate",
     initialState: {
         isError: false,
-        MailSent: false,
-        isLoading: false
+        MailSuccess: false
     },
     reducers: {
         setMailSendingFailed: (state, action) => {
             state.isError = action.payload
         },
         setMailStatusSucceed: (state, action) => {
-            if (action.payload) {
-                state.isError = false;
-                state.MailSent = true
-                return
-            }
-            state.MailSent = false
-
-        },
-        setIsLoading: (state, action) => { state.isLoading = action.payload }
+            state.MailSuccess = action.payload
+        }
     }
 
 })
 
-export const { setMailSendingFailed, setMailStatusSucceed, setIsLoading } = MailStateReducer.actions
+export const { setMailSendingFailed, setMailStatusSucceed } = MailStateReducer.actions
 export default MailStateReducer.reducer

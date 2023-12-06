@@ -2,14 +2,10 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import MailStateReducer from "./reducers/MailStateReducer";
-import ModalReducer from "./reducers/Modal";
-
-
 
 export const store = configureStore({
     reducer: {
         MailState: MailStateReducer,
-        ModalState: ModalReducer
     }
 })
 
