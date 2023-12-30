@@ -63,7 +63,7 @@ const Kontaktformular: React.FC<{ selectedQuestionsDataObject: any }> = React.me
 
     function sendMail(dataObject: Object) {
         // const url = "/backend/mailer.php"
-        const url = "http://localhost:3081/backend/mailer.php"
+        const url = "http://localhost:3001/backend/mailer.php"
 
         setIsLoading(true)
         axios.post(url, dataObject, {
@@ -71,6 +71,7 @@ const Kontaktformular: React.FC<{ selectedQuestionsDataObject: any }> = React.me
                 'Content-Type': 'application/json; charset=utf-8',
             }
         }).then(res => {
+            console.log(res)
             const response: string = res.data.msgSent;
             if (res.data.msgSent) {
                 dispatch(setMailStatusSucceed(true))
@@ -96,8 +97,8 @@ const Kontaktformular: React.FC<{ selectedQuestionsDataObject: any }> = React.me
         <>
             <div className="">
                 <form ref={formRef} onSubmit={onSUBMIT} className="p-4 lg:p-8 ">
-                    {/* Gender */}
 
+                    {/* Gender */}
                     <div className="grid mb-4" onChange={() => { setGenderNotSelected(false) }}>
                         <div className='flex justify-between items-center'>
                             <div className='flex gap-x-4'>
@@ -232,12 +233,9 @@ const Kontaktformular: React.FC<{ selectedQuestionsDataObject: any }> = React.me
                                 pointer-events-none">Ort *</label>
                         </div>
                     </div>
-                    <div >
+                    <div>
                         <div className="relative mb-3" data-te-input-wrapper-init>
-                            <textarea className="peer min-h-[10rem] p-3 w-full rounded border border-black text-gray-600 placeholder-transparent focus:outline-none focus:border-primary-100 whitespace-pre-line" id="Textarea" rows={9} placeholder="Nachricht" defaultValue={
-                                `Sehr geehrtes Team VASSADE,\n\nich interessiere mich für eine Beratung und möchte gerne weitere Informationen zu den angebotenen Dienstleistungen erhalten.\n\nBitte nehmen Sie Kontakt mit mir auf, um einen geeigneten Termin für eine Beratung zu vereinbaren.\n\nIch bevorzuge eine telefonische Kontaktaufnahme, um mein Anliegen näher zu besprechen.\n\nIch freue mich auf Ihre Rückmeldung.`} ref={messageRef} />
-
-
+                            <textarea className="peer min-h-[10rem] p-3 w-full rounded border border-black text-gray-600 placeholder-transparent focus:outline-none focus:border-primary-100 whitespace-pre-line" id="Textarea" rows={9} placeholder="Nachricht" />
                             <label htmlFor="Textarea" className="absolute ml-2 px-1 left-0 text-gray-600 text-sm transition-all 
                                 -top-2.5 bg-white                                
                                 peer-placeholder-shown:text-gray-8 peer-placeholder-shown:text-gray-800

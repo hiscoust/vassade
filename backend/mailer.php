@@ -64,7 +64,7 @@ try {
     </html>";
 
     if (!$mail->send())
-        throw new ErrorException("hal");
+        throw new ErrorException("");
 
     header('Content-Type: application/json');
     echo json_encode($response);

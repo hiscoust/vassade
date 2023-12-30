@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ReduxProvider from '../components/Redux/ReduxProvider';
@@ -30,10 +29,9 @@ export default function RootLayout({
     <html lang="de" className='scroll-smooth'>
       <head>
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-        <link rel='preload' href='/assets/logo_weiss.png' type='image/png' />
+        <link rel='preload' href='/assets/logo_weiss.png' type='image/png' as='image' />
       </head>
       <body className={inter.className}>
-        {/* Desktop Navbar */}
         <ReduxProvider>
           {/* <Navbar /> */}
           {children}
